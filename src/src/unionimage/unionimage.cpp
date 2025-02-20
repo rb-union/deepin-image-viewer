@@ -93,7 +93,8 @@ public:
                       << "X3F"
                       << "EPS"
                       << "SR2"
-                      << "AVIFS";
+                      << "AVIFS"
+                      << "DCI";
         m_canSave << "BMP"
                   << "JPG"
                   << "JPEG"

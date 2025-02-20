@@ -8,9 +8,9 @@
 #include <QtCore/qglobal.h>
 
 #if defined(UNIONIMAGE_LIBRARY)
-#  define UNIONIMAGESHARED_EXPORT Q_DECL_EXPORT
+#define UNIONIMAGESHARED_EXPORT Q_DECL_EXPORT
 #else
-#  define UNIONIMAGESHARED_EXPORT Q_DECL_IMPORT
+#define UNIONIMAGESHARED_EXPORT Q_DECL_IMPORT
 #endif
 
 #include <QHash>
@@ -23,22 +23,22 @@
 
 #include "unionimage_global.h"
 
-namespace  LibUnionImage_NameSpace {
+namespace LibUnionImage_NameSpace {
 
 enum SupportType {
-    UNKNOWNTYPE = 0,    // unknown type
-    BITMAP      = 1,    // standard image               : 1-, 4-, 8-, 16-, 24-, 32-bit
-    UINT16      = 2,    // array of unsigned short      : unsigned 16-bit
-    INT16       = 3,    // array of short               : signed 16-bit
-    UINT32      = 4,    // array of unsigned long       : unsigned 32-bit
-    INT32       = 5,    // array of long                : signed 32-bit
-    FLOAT       = 6,    // array of float               : 32-bit IEEE floating point
-    DOUBLE      = 7,    // array of double              : 64-bit IEEE floating point
-    COMPLEX     = 8,    // array of FICOMPLEX           : 2 x 64-bit IEEE floating point
-    RGB16       = 9,    // 48-bit RGB image             : 3 x 16-bit
-    RGBA16      = 10,   // 64-bit RGBA image            : 4 x 16-bit
-    RGBF        = 11,   // 96-bit RGB float image       : 3 x 32-bit IEEE floating point
-    RGBAF       = 12    // 128-bit RGBA float image     : 4 x 32-bit IEEE floating point
+    UNKNOWNTYPE = 0,  // unknown type
+    BITMAP = 1,       // standard image               : 1-, 4-, 8-, 16-, 24-, 32-bit
+    UINT16 = 2,       // array of unsigned short      : unsigned 16-bit
+    INT16 = 3,        // array of short               : signed 16-bit
+    UINT32 = 4,       // array of unsigned long       : unsigned 32-bit
+    INT32 = 5,        // array of long                : signed 32-bit
+    FLOAT = 6,        // array of float               : 32-bit IEEE floating point
+    DOUBLE = 7,       // array of double              : 64-bit IEEE floating point
+    COMPLEX = 8,      // array of FICOMPLEX           : 2 x 64-bit IEEE floating point
+    RGB16 = 9,        // 48-bit RGB image             : 3 x 16-bit
+    RGBA16 = 10,      // 64-bit RGBA image            : 4 x 16-bit
+    RGBF = 11,        // 96-bit RGB float image       : 3 x 32-bit IEEE floating point
+    RGBAF = 12        // 128-bit RGBA float image     : 4 x 32-bit IEEE floating point
 };
 
 UNIONIMAGESHARED_EXPORT QString unionImageVersion();
@@ -55,7 +55,6 @@ UNIONIMAGESHARED_EXPORT const QStringList unionImageSupportFormat();
 UNIONIMAGESHARED_EXPORT const QStringList supportStaticFormat();
 UNIONIMAGESHARED_EXPORT const QStringList supportMovieFormat();
 
-
 UNIONIMAGESHARED_EXPORT bool isDynamicFormat();
 /**
  * @brief CreatNewImage
@@ -68,7 +67,8 @@ UNIONIMAGESHARED_EXPORT bool isDynamicFormat();
  * @author DJH
  * 创建一个可以自定义深度和颜色空间的图片
  */
-UNIONIMAGESHARED_EXPORT bool creatNewImage(QImage &res, int width = 0, int height = 0, int depth = 0, SupportType type = UNKNOWNTYPE);
+UNIONIMAGESHARED_EXPORT bool
+creatNewImage(QImage &res, int width = 0, int height = 0, int depth = 0, SupportType type = UNKNOWNTYPE);
 
 /**
  * @brief LoadImageFromFile
@@ -82,7 +82,8 @@ UNIONIMAGESHARED_EXPORT bool creatNewImage(QImage &res, int width = 0, int heigh
  * 载入失败返回false，如果需要可以读取errorMsg返回错误信息
  * 载入动态图片时，只会返回动态图片的第一帧，如果需要动图请使用UUnionMovieImage
  */
-UNIONIMAGESHARED_EXPORT bool loadStaticImageFromFile(const QString &path, QImage &res, QString &errorMsg, const QString &format_bar = "");
+UNIONIMAGESHARED_EXPORT bool
+loadStaticImageFromFile(const QString &path, QImage &res, QString &errorMsg, const QString &format_bar = "");
 
 /**
  * @brief detectImageFormat
@@ -176,7 +177,7 @@ UNIONIMAGESHARED_EXPORT bool canSave(const QString &path);
 /**
  * @brief getOrientation 取得文件自带的方向信息
  * @param path 文件路径
- * @author LMH      
+ * @author LMH
  * @return int 图片方向类型枚举
  * 获得图片的数据
  */
@@ -200,7 +201,6 @@ UNIONIMAGESHARED_EXPORT imageViewerSpace::ImageType getImageType(const QString &
  * 获得路径类型
  */
 UNIONIMAGESHARED_EXPORT imageViewerSpace::PathType getPathType(const QString &imagepath);
-};
+};  // namespace LibUnionImage_NameSpace
 
-
-#endif // UNIONIMAGE_H
+#endif  // UNIONIMAGE_H

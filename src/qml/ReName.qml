@@ -113,6 +113,8 @@ DialogWindow {
             top: renametitle.bottom
             topMargin: 16
         }
+
+
     }
 
     RecommandButton {

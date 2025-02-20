@@ -529,11 +529,11 @@ Item {
         //缩放和切换需要重新执行此函数
         function liveTextAnalyze() {
             viewBackground.grabToImage(function (result) {
-                    //截取当前控件显示
-                    liveTextAnalyzer.setImage(result.image); //设置分析图片
-                    liveTextAnalyzer.analyze(view.currentIndex); //执行分析（异步执行，函数会立即返回）
-                    // result.saveToFile("/home/user/Desktop/viewer.png") //保存截取的图片，debug用
-                });
+                //截取当前控件显示
+                liveTextAnalyzer.setImage(result.image); //设置分析图片
+                liveTextAnalyzer.analyze(view.currentIndex); //执行分析（异步执行，函数会立即返回）
+                // result.saveToFile("/home/user/Desktop/viewer.png") //保存截取的图片，debug用
+            });
         }
 
         //live text执行函数
@@ -678,14 +678,14 @@ Item {
     Loader {
         id: infomationDig
 
-        function show() {
-            IV.GStatus.showImageInfo = true;
-        }
-
         function close() {
             if (IV.GStatus.showImageInfo && Loader.Ready === status) {
-                infomationDig.item.close()
+                infomationDig.item.close();
             }
+        }
+
+        function show() {
+            IV.GStatus.showImageInfo = true;
         }
 
         active: IV.GStatus.showImageInfo
